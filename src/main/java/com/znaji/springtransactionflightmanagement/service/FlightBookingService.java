@@ -9,6 +9,7 @@ import com.znaji.springtransactionflightmanagement.entity.PassengerInfo;
 import com.znaji.springtransactionflightmanagement.entity.PaymentInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -19,6 +20,7 @@ public class FlightBookingService {
     private final PaymentInfoRepo paymentInfoRepo;
     private final PassengerInfoRepo passengerInfoRepo;
 
+    @Transactional
     public FlightBookingAcknowledgement bookFlightTicket(final FlightBookingRequest flightBookingRequest) {
         PassengerInfo passengerInfo = flightBookingRequest.getPassengerInfo();
         passengerInfo = passengerInfoRepo.save(passengerInfo);
